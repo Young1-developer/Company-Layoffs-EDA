@@ -64,7 +64,7 @@ CASE
 END cleanDate
 FROM layoffs_data;
 ```
-![Checking date formats](layoffs-analysis/screenshoot/sqlf2.png)
+![Checking date formats](layoffs-analysis/screenshoot/sqlf6.png)
 
 Once verified, the same `CASE` logic was applied in an `UPDATE` statement, and the column was converted from text to a proper `DATE` type.
 ```sql
@@ -87,7 +87,7 @@ SET layoff_date = (
 ALTER TABLE layoffs_data
 MODIFY COLUMN Layoff_date DATE;
 ```
-![Updating date format and column type](layoffs-analysis/screenshoot/sqlf3.png)
+![Updating date format and column type](layoffs-analysis/screenshoot/sqlf7.png)
 
 ---
 
@@ -98,7 +98,7 @@ The original `Date` column was renamed to `Layoff_date` for clarity.
 ALTER TABLE layoffs_data
 RENAME COLUMN `Date` TO `Layoff_date`;
 ```
-![Renaming the date column](layoffs-analysis/screenshoot/sqlf4.png)
+![Renaming the date column](layoffs-analysis/screenshoot/sqlf5.png)
 
 ---
 
@@ -113,7 +113,7 @@ FROM layoffs_data
 GROUP BY Company
 ORDER BY appearances DESC;
 ```
-![Company appearance counts](layoffs-analysis/screenshoot/sqlf5.png)
+![Company appearance counts](layoffs-analysis/screenshoot/sqlf2.png)
 
 ---
 
@@ -127,7 +127,7 @@ GROUP BY Company
 ORDER BY number_of_layoff DESC
 LIMIT 5;
 ```
-![Top 5 companies by layoff count](layoffs-analysis/screenshoot/sqlf6.png)
+![Top 5 companies by layoff count](layoffs-analysis/screenshoot/sqlf3.png)
 
 **Result:** Amazon and Google tied for the most layoff records (12 each), followed by Rivian (8), Microsoft (7), and Better.com (6).
 
@@ -171,7 +171,7 @@ SELECT *
 FROM layoffs_data
 WHERE Layoff_date >= DATE_SUB(CURDATE(), INTERVAL 30 DAY);
 ```
-![Days ago and last-30-days layoffs](layoffs-analysis/screenshoot/sqlf1.png)
+![Days ago and last-30-days layoffs](layoffs-analysis/screenshoot/sqlf8.png)
 
 ---
 
